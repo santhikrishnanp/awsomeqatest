@@ -9,7 +9,7 @@ class RegisterPage{
         this.passwordInput = page.getByText('Password',{exact: true});
         this.confirmPasswordInput = page.getByRole('textbox', { name: 'Password Confirm' });
         this.subscribe = page.getByRole('radio', { name: 'Yes' });
-        this.terms = page.getByRole('checkbox', { name: 'Privacy Policy' });
+        this.terms = page.locator('input[name="agree"]');
         this.submit = page.getByRole('button', { name: 'Continue' });
     }
 
@@ -21,7 +21,7 @@ class RegisterPage{
         await this.passwordInput.fill(password);
         await this.confirmPasswordInput.fill(password);
         await this.subscribe.click();
-        await this.terms.click();
+        await this.terms.check();
         await this.submit.click();
     }
 
